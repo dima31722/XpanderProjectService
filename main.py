@@ -1,11 +1,11 @@
 from fastapi import FastAPI, HTTPException, Depends, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-from .database import Base, engine, get_db
-from .models import User
-from .schemas import UserCreate, UserLogin, UserUpdate, UserProfile
+from src.database import Base, engine, get_db
+from src.models import User
+from src.schemas import UserCreate, UserLogin, UserUpdate, UserProfile
 from sqlalchemy.orm import Session
-from .authentication import create_hash_password, verify_hashing, create_token, TokenAuthorizationMiddleware
-from .caching import check_cache, update_cache
+from src.authentication import create_hash_password, verify_hashing, create_token, TokenAuthorizationMiddleware
+from src.caching import check_cache, update_cache
 import redis as rd
 import uvicorn
 import os
@@ -29,7 +29,7 @@ app.add_middleware(
 app.add_middleware(TokenAuthorizationMiddleware)
 
 
-app.post("/register", response_model=str, status_code=status.HTTP_201_CREATED)
+app.post("/register", response_model=str)
 async def register_user(req:UserCreate, db: Session = Depends(get_db)):
     
     #if password or username won't enter, fastapi will raise exception 422
@@ -43,7 +43,7 @@ async def register_user(req:UserCreate, db: Session = Depends(get_db)):
         first_name=req.first_name,
         last_name=req.last_name,
         email=req.email,
-        hashed_password=hashed_password
+        password=hashed_password
     )
     db.add(new_user)
     db.commit()
@@ -123,6 +123,4 @@ async def get_user_profile(request: Request, db: Session = Depends(get_db)):
     return user
 
 if __name__ == "__main__":
-    PORT = os.getenv("PORT", 8080)
-    HOST = os.getenv("HOST", "127.0.0.1")
-    uvicorn.run("main:app", host=HOST, port=PORT, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

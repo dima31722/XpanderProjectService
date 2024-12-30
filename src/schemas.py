@@ -3,7 +3,7 @@ from typing import Optional
 
 class UserModel(BaseModel):
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserCreate(UserModel):
     first_name: str

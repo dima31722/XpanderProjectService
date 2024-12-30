@@ -54,7 +54,8 @@ isort
 # Database Drivers (Choose as Needed)
 # ----------------------------
 psycopg2-binary        # PostgreSQL driver
-mysqlclient            # MySQL driver
+mysqlclient 
+pymysql           # MySQL driver
 
 # ----------------------------
 # Environment Variables
@@ -93,3 +94,7 @@ pytest-cov
 
 #caching
 redis
+
+#email validation
+email-validator
+pydantic[email]

@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from .database import Base
+from database import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -9,4 +9,6 @@ class User(Base):
     last_name = Column(String(50), nullable=False)
     email = Column(String(100), unique=True, index=True, nullable=False)
     password = Column(String(255), nullable=False)
+    
+    
     
