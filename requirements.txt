@@ -1,0 +1,92 @@
+#-----------------------------
+# Main Packages 
+#-----------------------------
+pandas
+numpy
+scipy
+
+# ----------------------------
+# Flask Requirements
+# ----------------------------
+flask
+gunicorn
+flask-cors
+flask-restful
+flask-sqlalchemy
+flask-migrate
+flask-login
+flask-wtf
+werkzeug
+itsdangerous
+
+# ----------------------------
+# FastAPI Requirements
+# ----------------------------
+fastapi
+uvicorn[standard]
+pydantic
+sqlalchemy
+alembic
+python-multipart
+aiofiles
+jinja2
+aiohttp
+aio-pika
+aiokafka
+motor
+httpx
+websockets
+celery
+slowapi
+fastapi-jwt-auth
+
+# ----------------------------
+# Development Tools (Optional)
+# ----------------------------
+black
+flake8
+pylint
+pytest
+mypy
+isort
+
+# ----------------------------
+# Database Drivers (Choose as Needed)
+# ----------------------------
+psycopg2-binary        # PostgreSQL driver
+mysqlclient            # MySQL driver
+
+# ----------------------------
+# Environment Variables
+# ----------------------------
+python-dotenv
+
+# ----------------------------
+# Additional Recommended Packages
+# ----------------------------
+
+# Security and Authentication
+python-jose
+passlib
+
+# Logging
+loguru
+
+# Monitoring and Metrics
+prometheus-client
+
+# Error Tracking
+sentry-sdk
+
+# CORS Middleware for FastAPI
+fastapi-cors
+
+# Serialization and Validation
+marshmallow
+
+# HTTP Client
+httpx
+
+# Testing Enhancements
+pytest-asyncio
+pytest-cov
