@@ -8,6 +8,7 @@ from .authentication import create_hash_password, verify_hashing, create_token, 
 from .caching import check_cache, update_cache
 import redis as rd
 import uvicorn
+import os
 
 app = FastAPI()
 
@@ -122,4 +123,6 @@ async def get_user_profile(request: Request, db: Session = Depends(get_db)):
     return user
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    PORT = os.getenv("PORT", 8080)
+    HOST = os.getenv("HOST", "127.0.0.1")
+    uvicorn.run("main:app", host=HOST, port=PORT, reload=True)
